@@ -91,19 +91,42 @@
           <h2>Update Items Sold</h2>
         </div>
 
-        <div class="list-container">
-            <ul class="list-group">
-                <li class="list-group-item">An item <button type="button" class="btn btn-primary increment" id="inc-1">Increment</button> <span id="curren-value">value</span> <button type="button" class="btn btn-danger decrement" id="dec-1">Decrement</button></li>
-                <li class="list-group-item">An item <button type="button" class="btn btn-primary increment" id="inc-2">Increment</button> <span id="curren-value">value</span> <button type="button" class="btn btn-danger decrement" id="dec-2">Decrement</button></li>
-                <li class="list-group-item">An item <button type="button" class="btn btn-primary increment" id="inc-3">Increment</button> <span id="curren-value">value</span> <button type="button" class="btn btn-danger decrement" id="dec-3">Decrement</button></li>
-                <li class="list-group-item">An item <button type="button" class="btn btn-primary increment" id="inc-4">Increment</button> <span id="curren-value">value</span> <button type="button" class="btn btn-danger decrement" id="dec-4">Decrement</button></li>
-                <li class="list-group-item">An item <button type="button" class="btn btn-primary increment" id="inc-5">Increment</button> <span id="curren-value">value</span> <button type="button" class="btn btn-danger decrement" id="dec-5">Decrement</button></li>
-                <li class="list-group-item">An item <button type="button" class="btn btn-primary increment" id="inc-6">Increment</button> <span id="curren-value">value</span> <button type="button" class="btn btn-danger decrement" id="dec-6">Decrement</button></li>
-                <li class="list-group-item">An item <button type="button" class="btn btn-primary increment" id="inc-7">Increment</button> <span id="curren-value">value</span> <button type="button" class="btn btn-danger decrement" id="dec-7">Decrement</button></li>
-                <li class="list-group-item">An item <button type="button" class="btn btn-primary increment" id="inc-8">Increment</button> <span id="curren-value">value</span> <button type="button" class="btn btn-danger decrement" id="dec-8">Decrement</button></li>
-              </ul>
-        </div>
-      </main>
+        
+  <form id="salesForm">
+    <div class="mb-3">
+      <label for="laptop" class="form-label">Laptop</label>
+      <input type="text" class="form-control" id="laptop" placeholder="Number of laptops sold this week">
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone</label>
+      <input type="text" class="form-control" id="phone" placeholder="Number of phones sold this week">
+    </div>
+    <div class="mb-3">
+      <label for="monitor" class="form-label">Monitor</label>
+      <input type="text" class="form-control" id="monitor" placeholder="Number of monitors sold this week">
+    </div>
+    <div class="mb-3">
+      <label for="headphones" class="form-label">Headphones</label>
+      <input type="text" class="form-control" id="headphones" placeholder="Number of headphones sold this week">
+    </div>
+    <div class="mb-3">
+      <label for="camera" class="form-label">Camera</label>
+      <input type="text" class="form-control" id="camera" placeholder="Number of cameras sold this week">
+    </div>
+    <div class="mb-3">
+      <label for="mouse" class="form-label">Mouse</label>
+      <input type="text" class="form-control" id="mouse" placeholder="Number of mice sold this week">
+    </div>
+    <div class="mb-3">
+      <label for="keyboard" class="form-label">Keyboard</label>
+      <input type="text" class="form-control" id="keyboard" placeholder="Number of keyboards sold this week">
+    </div>
+    <div class="mb-3">
+      <label for="speakers" class="form-label">Speakers</label>
+      <input type="text" class="form-control" id="speakers" placeholder="Number of speakers sold this week">
+    </div>
+    <button style="margin-left: 0vw;" class="btn btn-primary" type="submit">Submit</button>
+  </form>
       <!-- End Main -->
 
     </div>
@@ -118,5 +141,100 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+    import {getDatabase, set, get, update, remove, ref, child, onValue} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCmG07H1j2oxLI5eVBDfeMywDB1oN3XtZU",
+      authDomain: "cc-ise.firebaseapp.com",
+      databaseURL: "https://cc-ise-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "cc-ise",
+      storageBucket: "cc-ise.appspot.com",
+      messagingSenderId: "827798268593",
+      appId: "1:827798268593:web:a206d885242e9c1b625090",
+      measurementId: "G-8NJTJ992T5"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+  
+  const db = getDatabase();
+  const graphRef = ref(db, "/graph");
+
+
+    
+  let dynamicDataArea;
+    let dynamicDataBar;
+  
+    onValue(graphRef, (snapshot) => {
+    const graphData = snapshot.val();
+    console.log(graphData);
+    
+    const firstKey = Object.keys(graphData)[0];
+    dynamicDataArea = graphData[firstKey].dynamicDataArea;
+    dynamicDataBar = graphData[firstKey].dynamicDataBar;
+  
+     // Store in local storage
+      localStorage.setItem('dynamicDataArea', JSON.stringify(dynamicDataArea));
+      localStorage.setItem('dynamicDataBar', JSON.stringify(dynamicDataBar));
+  
+    console.log(dynamicDataBar)
+  });
+
+  document.getElementById('salesForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Fetch all field values
+        const laptopSales = document.getElementById('laptop').value || -100;
+        const phoneSales = document.getElementById('phone').value || -100;
+        const monitorSales = document.getElementById('monitor').value || -100;
+        const headphonesSales = document.getElementById('headphones').value || -100;
+        const cameraSales = document.getElementById('camera').value || -100;
+        const mouseSales = document.getElementById('mouse').value || -100;
+        const keyboardSales = document.getElementById('keyboard').value || -100;
+        const speakersSales = document.getElementById('speakers').value || -100;
+
+        const salesArray = [
+                parseInt(document.getElementById('laptop').value || -100),
+                parseInt(document.getElementById('phone').value || -100),
+                parseInt(document.getElementById('monitor').value || -100),
+                parseInt(document.getElementById('headphones').value || -100),
+                parseInt(document.getElementById('camera').value || -100),
+                parseInt(document.getElementById('mouse').value || -100),
+                parseInt(document.getElementById('keyboard').value || -100),
+                parseInt(document.getElementById('speakers').value || -100),
+                ];
+        
+                salesArray.forEach((value, index) => {
+                        if (value !== -100) {
+                            dynamicDataBar[0].data[index] = value;
+                        }
+                    });
+                    try {
+                        update(ref(db, "/graph/" + '1710349833749-521691'), {
+                        dynamicDataBar: [
+                            { name: 'Products', data: dynamicDataBar[0].data }
+                        ]
+                        }); 
+                        alert('Update successful!');
+                    } catch (error) {
+                        alert("something went wrong")
+                    }
+
+            
+});
+
+
+  
+      </script>
   </body>
 </html>
