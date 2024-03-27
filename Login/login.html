@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <!-- <script type="module" src="firebase.js" defer></script> -->
+    <script type="module" src="login.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <form class="form" action="login.php" method="POST">
+            <h2>Login</h2>
+            <input id="username" type="text" name="username" placeholder="Username" required>
+            <input id="password" type="password" name="password" placeholder="Password" required>
+            <button id="login" type="submit" onclick="signIn()" >Login</button>
+            <p>New User? <a href="reg.html">Register here</a></p>
+        </form>
+    </div>
+</body>
+</html>
+
